@@ -1,1 +1,2 @@
-# Sprint3_Hotel-api
+# seasonhotels_api
+Backend del desafio #3
