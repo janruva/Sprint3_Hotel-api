@@ -20,6 +20,11 @@ api.add_middleware(
     allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
 )
 
+@api.get("/")
+async def root():
+   
+    return {"message" : "Bienvenido a Season Hotels"}
+
 @api.get("/home")
 async def root():
     message: str
