@@ -2,8 +2,8 @@ from typing import Dict
 from pydantic import BaseModel
 
 class RoomsInDB(BaseModel):
-    id_room: int
-    username: str 
+    username: str
+    id_room: int 
     tipo_room: str
     camas: str
     ocupacion: str
@@ -13,8 +13,8 @@ class RoomsInDB(BaseModel):
 
 database_rooms = Dict[str, RoomsInDB]
 database_rooms = {
-    "Superior": RoomsInDB(**{"id_room": 101,
-                            "username": "janruva",
+    "janruva": RoomsInDB(**{"username": "janruva",
+                            "id_room": 101,
                             "tipo_room": "Superior",
                            "camas": "Cama medida doble",
                            "ocupacion": "2 personas",
@@ -22,8 +22,8 @@ database_rooms = {
                            "vistas": "Patio",
                            "tarifa_basica": 100000,
                            }),
-    "Deluxe": RoomsInDB(**{"id_room": 201,
-                            "username": "alexis",
+    "alexis": RoomsInDB(**{"username": "alexis",
+                            "id_room": 201,
                             "tipo_room": "Deluxe",
                            "camas": "Cama medida queen",
                            "ocupacion": "2 personas",
@@ -31,8 +31,8 @@ database_rooms = {
                            "vistas": "Museo, plaza o jardines",
                            "tarifa_basica": 200000,
                            }),
-     "Junior": RoomsInDB(**{"id_room": 301,
-                            "username": "Lorena",
+     "lorena": RoomsInDB(**{"username": "lorena",
+                            "id_room": 301,
                             "tipo_room": "Junior",
                            "camas": "Cama medida king",
                            "ocupacion": "2 personas",
@@ -42,9 +42,9 @@ database_rooms = {
                            }),
 }
 
-def get_room(tipo_room: str):
-    if tipo_room in database_rooms.keys():
-        return database_rooms[tipo_room]
+def get_room(username: str):
+    if username in database_rooms.keys():
+        return database_rooms[username]
     else:
         return None
 

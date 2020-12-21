@@ -37,8 +37,8 @@ async def auth_user(user_in: UserIn):
     if user_in_db == None:
         raise HTTPException(status_code=404, detail="El usuario no existe")
     if user_in_db.password != user_in.password:
-        return  ("Usuario no registrado en nuestro sistema")
-    return  ("Usuario registrado en Season Hotels")
+        raise HTTPException(status_code=403, detail="Error de autenticacion")
+    return  {"Autenticado": True}
 
 @api.get("/user/room/{username}")
 async def get_reserva(username: str):
@@ -48,10 +48,18 @@ async def get_reserva(username: str):
     user_out = UserOut(**user_in_db.dict())
     return  user_out
 
-@api.get("/room/{tipo_room}")
-async def get_roomuser(tipo_room: str):
-    room_in_db = get_room(tipo_room)
+@api.get("/user/tipo_room/{username}")
+async def get_rooms(username: str):
+    room_in_db = get_room(username)
     if room_in_db == None:
-        raise HTTPException(status_code=404, detail="La habitación no existe")
+        raise HTTPException(status_code=401, detail="La habitación no existe")
+    room_out = RoomsOut(**room_in_db.dict())
+    return room_out
+
+@api.get("/user/season/{username}")
+async def get_season(username: str):
+    room_in_db = get_room(username)
+    if room_in_db == None:
+        raise HTTPException(status_code=402, detail="La temporada no existe")
     room_out = RoomsOut(**room_in_db.dict())
     return room_out

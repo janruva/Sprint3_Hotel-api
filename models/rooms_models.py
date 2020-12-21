@@ -6,8 +6,8 @@ class RoomsIn(BaseModel):
     tipo_room: str
 
 class RoomsOut(BaseModel):
-    id_room: int
     username: str 
+    id_room: int
     tipo_room: str
     camas: str
     ocupacion: str

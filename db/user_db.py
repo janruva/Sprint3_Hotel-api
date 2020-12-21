@@ -16,8 +16,8 @@ database_users = {
     "alexis": UserInDB(**{"username": "alexis",
                           "password": "alex256",
                           "estado": "Usuario registrado en la habitación Deluxe"}),
-    "Lorena": UserInDB(**{"username": "Lorena",
-                            "password": "Lorena20",
+    "lorena": UserInDB(**{"username": "lorena",
+                            "password": "lorena20",
                             "estado": "Usuario registrado en la habitación Junior"}),
 }
 
